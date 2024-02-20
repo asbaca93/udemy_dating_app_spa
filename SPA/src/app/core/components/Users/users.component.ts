@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
+import {CommonModule} from "@angular/common";
 import {User} from "../../models/User.model";
 import {UsersService} from "../../services/users.service";
 
 @Component({
   standalone: true,
+  imports: [CommonModule],
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
@@ -15,7 +17,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.usersService.getUsers().subscribe(result => {
-      console.log(result)
+      this.users = result;
     })
   }
 }
